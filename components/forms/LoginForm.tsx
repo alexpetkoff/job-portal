@@ -61,12 +61,12 @@ export function LoginForm() {
           <div className="flex flex-col gap-4">
             <form>
               <Button className="w-full cursor-pointer" variant={"outline"}>
-                Login with <Google className="size-12" />
+                Login with <Google className="size-12 translate-y-0.5" />
               </Button>
             </form>
             <form>
               <Button className="w-full cursor-pointer" variant={"outline"}>
-                Login with <GitHub className="size-4" />
+                Login with <GitHub className="size-5" />
               </Button>
             </form>
           </div>
