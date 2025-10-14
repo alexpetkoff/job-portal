@@ -14,7 +14,9 @@ export default function Navbar() {
       </Link>
       <div className="flex items-center gap-4">
         <ModeToggle />
-        <Button className="cursor-pointer">Login</Button>
+        <Link href="/login">
+          <Button className="cursor-pointer">Login</Button>
+        </Link>
       </div>
     </nav>
   );
