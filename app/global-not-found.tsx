@@ -57,17 +57,16 @@ const LayerStackIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
 export default function GlobalNotFound() {
   return (
     <RootLayout>
-      <Card className="max-w-xl mx-auto text-center mt-[calc(50vh/2)]">
+      <Card className=" mx-auto text-center mt-[calc(50vh/2)] max-w-[400px]">
         <LayerStackIcon className="mx-auto w-12" />
-        <CardTitle className="text-xl">404 - Not Found!</CardTitle>
+        <CardTitle className="text-xl">
+          <h1>404 - Not Found!</h1>
+        </CardTitle>
         <CardDescription>
-          The page you are looking for does not exist!
+          <p>The page you are looking for does not exist!</p>
         </CardDescription>
-        <Link
-          href="/"
-          className="relative w-fit mx-auto flex items-center group hover:text-green-600"
-        >
-          <Button className="cursor-pointer">Go Back Home</Button>
+        <Link href="/" className="relative w-fit mx-auto flex items-center">
+          <Button className="cursor-pointer">{"<"} Go Back Home</Button>
         </Link>
       </Card>
     </RootLayout>
