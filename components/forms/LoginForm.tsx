@@ -1,3 +1,4 @@
+import { signIn } from "@/app/utils/auth";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -61,14 +62,30 @@ export function LoginForm() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-4">
-            <form>
-              <Button className="w-full cursor-pointer" variant={"outline"}>
-                Login with <Google className="size-12 translate-y-0.5" />
+            <form
+              action={async () => {
+                "use server";
+
+                await signIn("github", {
+                  redirectTo: "/",
+                });
+              }}
+            >
+              <Button
+                type="submit"
+                className="w-full cursor-pointer"
+                variant={"outline"}
+              >
+                Login with <GitHub className="size-5" />
               </Button>
             </form>
             <form>
-              <Button className="w-full cursor-pointer" variant={"outline"}>
-                Login with <GitHub className="size-5" />
+              <Button
+                type="submit"
+                className="w-full cursor-pointer"
+                variant={"outline"}
+              >
+                Login with <Google className="size-12 translate-y-0.5" />
               </Button>
             </form>
           </div>
