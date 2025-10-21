@@ -74,9 +74,9 @@ export function LoginForm() {
           </div>
         </CardContent>
       </Card>
-      <div className="text-center text-xs text-muted-foreground text-balance">
-        By clicking continue you agree to our terms and service privacy policy!
-      </div>
+      <p className="text-center text-xs text-muted-foreground text-balance">
+        By clicking continue, you agree to our terms and service privacy policy!
+      </p>
     </div>
   );
 }
