@@ -2,8 +2,11 @@ import Link from "next/link";
 import { BriefcaseBusiness } from "lucide-react";
 import { Button } from "../ui/button";
 import { ThemeToggle } from "./ThemeToggle";
+import { auth, signOut } from "@/app/utils/auth";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await auth();
+
   return (
     <nav className="flex items-center justify-between py-5">
       <Link href="/" className="flex items-center gap-2">
@@ -14,9 +17,22 @@ export default function Navbar() {
       </Link>
       <div className="flex items-center gap-4">
         <ThemeToggle />
-        <Link href="/login">
-          <Button className="cursor-pointer text-white">Login</Button>
-        </Link>
+        {session?.user ? (
+          <form
+            action={async () => {
+              "use server";
+              await signOut({ redirectTo: "/" });
+            }}
+          >
+            <Button className="cursor-pointer text-white bg-red-400 hover:bg-red-500">
+              Logout
+            </Button>
+          </form>
+        ) : (
+          <Link href="/login">
+            <Button className="cursor-pointer text-white">Login</Button>
+          </Link>
+        )}
       </div>
     </nav>
   );

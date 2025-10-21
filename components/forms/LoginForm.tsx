@@ -1,4 +1,4 @@
-import { signIn } from "@/app/utils/auth";
+import { auth, signIn } from "@/app/utils/auth";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -9,6 +9,62 @@ import {
 } from "../ui/card";
 
 import type { SVGProps } from "react";
+import { GeneralSubmitButton } from "../general/SubmitButtons";
+import { redirect } from "next/navigation";
+
+export async function LoginForm() {
+  const session = await auth();
+
+  if (session?.user) {
+    return redirect("/");
+  }
+
+  return (
+    <div className="flex flex-col gap-6">
+      <Card>
+        <CardHeader className="text-center">
+          <CardTitle className="text-xl">
+            <h2>Welcome Back</h2>
+          </CardTitle>
+          <CardDescription>
+            <p>Login with your Google or Github account</p>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col gap-4">
+            <form
+              action={async () => {
+                "use server";
+
+                await signIn("github", {
+                  redirectTo: "/",
+                });
+              }}
+            >
+              <GeneralSubmitButton
+                width="w-full"
+                variant="outline"
+                text="Login with"
+                icon={<GitHub className="size-5" />}
+              ></GeneralSubmitButton>
+            </form>
+            <form>
+              <GeneralSubmitButton
+                width="w-full"
+                variant="outline"
+                text="Login with"
+                icon={<Google className="size-12 translate-y-0.5" />}
+              ></GeneralSubmitButton>
+            </form>
+          </div>
+        </CardContent>
+      </Card>
+      <p className="text-center text-xs text-muted-foreground text-balance">
+        By clicking continue, you agree to our terms and service privacy policy!
+      </p>
+    </div>
+  );
+}
 
 const GitHub = (props: SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="0 0 1024 1024" fill="none">
@@ -47,53 +103,3 @@ const Google = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-
-export function LoginForm() {
-  return (
-    <div className="flex flex-col gap-6">
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-xl">
-            <h2>Welcome Back</h2>
-          </CardTitle>
-          <CardDescription>
-            <p>Login with your Google or Github account</p>
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col gap-4">
-            <form
-              action={async () => {
-                "use server";
-
-                await signIn("github", {
-                  redirectTo: "/",
-                });
-              }}
-            >
-              <Button
-                type="submit"
-                className="w-full cursor-pointer"
-                variant={"outline"}
-              >
-                Login with <GitHub className="size-5" />
-              </Button>
-            </form>
-            <form>
-              <Button
-                type="submit"
-                className="w-full cursor-pointer"
-                variant={"outline"}
-              >
-                Login with <Google className="size-12 translate-y-0.5" />
-              </Button>
-            </form>
-          </div>
-        </CardContent>
-      </Card>
-      <p className="text-center text-xs text-muted-foreground text-balance">
-        By clicking continue, you agree to our terms and service privacy policy!
-      </p>
-    </div>
-  );
-}
