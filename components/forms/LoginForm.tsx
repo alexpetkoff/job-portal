@@ -1,5 +1,4 @@
 import { auth, signIn } from "@/app/utils/auth";
-import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
@@ -48,7 +47,15 @@ export async function LoginForm() {
                 icon={<GitHub className="size-5" />}
               ></GeneralSubmitButton>
             </form>
-            <form>
+            <form
+              action={async () => {
+                "use server";
+
+                await signIn("google", {
+                  redirectTo: "/",
+                });
+              }}
+            >
               <GeneralSubmitButton
                 width="w-full"
                 variant="outline"
