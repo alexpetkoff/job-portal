@@ -1,0 +1,92 @@
+export const countryList = [
+  {
+    name: "United States",
+    code: "US",
+    phoneCode: "+1",
+    flagEmoji: "🇺🇸",
+  },
+  {
+    name: "Canada",
+    code: "CA",
+    phoneCode: "+1",
+    flagEmoji: "🇨🇦",
+  },
+  {
+    name: "Mexico",
+    code: "MX",
+    phoneCode: "+52",
+    flagEmoji: "🇲🇽",
+  },
+  {
+    name: "Brazil",
+    code: "BR",
+    phoneCode: "+55",
+    flagEmoji: "🇧🇷",
+  },
+  {
+    name: "United Kingdom",
+    code: "GB",
+    phoneCode: "+44",
+    flagEmoji: "🇬🇧",
+  },
+  {
+    name: "Germany",
+    code: "DE",
+    phoneCode: "+49",
+    flagEmoji: "🇩🇪",
+  },
+  {
+    name: "France",
+    code: "FR",
+    phoneCode: "+33",
+    flagEmoji: "🇫🇷",
+  },
+  {
+    name: "Japan",
+    code: "JP",
+    phoneCode: "+81",
+    flagEmoji: "🇯🇵",
+  },
+  {
+    name: "Australia",
+    code: "AU",
+    phoneCode: "+61",
+    flagEmoji: "🇦🇺",
+  },
+  {
+    name: "India",
+    code: "IN",
+    phoneCode: "+91",
+    flagEmoji: "🇮🇳",
+  },
+  {
+    name: "China",
+    code: "CN",
+    phoneCode: "+86",
+    flagEmoji: "🇨🇳",
+  },
+  {
+    name: "South Africa",
+    code: "ZA",
+    phoneCode: "+27",
+    flagEmoji: "🇿🇦",
+  },
+  {
+    name: "Italy",
+    code: "IT",
+    phoneCode: "+39",
+    flagEmoji: "🇮🇹",
+  },
+  {
+    name: "Spain",
+    code: "ES",
+    phoneCode: "+34",
+    flagEmoji: "🇪🇸",
+  },
+  {
+    name: "Argentina",
+    code: "AR",
+    phoneCode: "+54",
+    flagEmoji: "🇦🇷",
+  },
+];
