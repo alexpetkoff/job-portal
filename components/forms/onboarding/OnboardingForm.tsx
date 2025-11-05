@@ -5,6 +5,8 @@ import Link from "next/link";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { BriefcaseBusiness } from "lucide-react";
+import { UserTypeSelection } from "./UserTypeForm";
+import { CompanyForm } from "./CompanyForm";
 
 type UserSelectionType = "company" | "jobSeeker" | null;
 
@@ -15,6 +17,21 @@ export function OnboardingForm() {
   function handleUserTypeSelection(type: UserSelectionType) {
     setUserType(type);
     setStep(2);
+  }
+
+  function renderStep() {
+    switch (step) {
+      case 1:
+        return <UserTypeSelection onSelect={handleUserTypeSelection} />;
+      case 2:
+        return userType === "company" ? (
+          <CompanyForm />
+        ) : (
+          <p>User is a jobSeeker</p>
+        );
+      default:
+        return null;
+    }
   }
 
   return (
@@ -29,12 +46,7 @@ export function OnboardingForm() {
         <h1></h1>
       </div>
       <Card className="max-w-lg w-full">
-        <CardContent>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo non
-          neque ut cum, et quia, debitis corporis dignissimos sint, natus
-          maiores quos expedita. Dignissimos, dicta. Numquam nisi non sint
-          voluptate?
-        </CardContent>
+        <CardContent>{renderStep()}</CardContent>
       </Card>
     </>
   );
