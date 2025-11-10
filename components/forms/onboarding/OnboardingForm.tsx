@@ -43,7 +43,6 @@ export function OnboardingForm() {
             Job<span className="text-primary">Portal</span>
           </h1>
         </Link>
-        <h1></h1>
       </div>
       <Card className="max-w-lg w-full">
         <CardContent>{renderStep()}</CardContent>
