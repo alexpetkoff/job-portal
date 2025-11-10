@@ -79,7 +79,7 @@ export function CompanyForm() {
                       <SelectGroup>
                         <SelectLabel>Location</SelectLabel>
                         {countryList.map((c, i) => (
-                          <SelectItem key={c.name} value={c.name}>
+                          <SelectItem key={`${c.name}-${i}`} value={c.name}>
                             <span className="text-primary">{c.flagEmoji}</span>
                             <span>{c.name}</span>
                           </SelectItem>
